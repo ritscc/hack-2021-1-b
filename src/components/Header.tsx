@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading,Button, Spacer } from "@chakra-ui/react";
 import { VFC } from "react";
 import { Link } from "./Link";
 import { Logo } from "./Logo";
@@ -11,6 +11,8 @@ export const Header: VFC = () => {
           <Logo />
         </Link>
       </Heading>
+      <Spacer />
+      <Button>ログアウト</Button>
     </Flex>
   );
 };
