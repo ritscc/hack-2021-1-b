@@ -1,13 +1,12 @@
-import { getAuth, User as AuthUser } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import firebase from "firebase/app";
 import { createContext, FC, useContext, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, AuthStateHook } from "react-firebase-hooks/auth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 
 export type User = {
   id: string;
-  name?: string;
-  photoURL?: string;
+  name: string | null;
+  photoURL: string | null;
 };
 
 type UserState =
@@ -33,37 +32,42 @@ type UserState =
     }
   | {
       state: "ERROR";
-      error: Error;
+      error: Error | firebase.auth.Error;
       user?: undefined;
     };
 
 const userContext = createContext<UserState>({ state: "LOADING_AUTH" });
 
-const getUserFromAuth = (authUser: AuthUser): User =>
-  authUser && {
-    id: authUser.uid,
-    // convert null to undefined
-    photoURL: authUser.photoURL ?? undefined,
-    name: authUser.displayName ?? undefined,
-  };
+const getUserFromAuth = (authUser: firebase.User): User => ({
+  id: authUser.uid,
+  photoURL: authUser.photoURL,
+  name: authUser.displayName,
+});
 
 const useUserProviderState = (): UserState => {
-  const [authUser, authLoading, authError] = useAuthState(getAuth());
+  const [authUser, authLoading, authError] = useAuthState(firebase.auth());
 
   const userId = authUser?.uid;
 
   const userDoc =
-    userId !== undefined ? doc(getFirestore(), "users", userId) : undefined;
+    userId !== undefined
+      ? firebase.firestore().doc(`users/${userId}`)
+      : undefined;
 
   const [firestoreUser, firestoreLoading, firestoreError] =
     useDocumentData<User>(userDoc);
 
   useEffect(() => {
-    if (userDoc === undefined || firestoreUser !== undefined) {
+    // not logged in or already created in firestore
+    if (
+      authUser == null ||
+      userDoc === undefined ||
+      firestoreUser !== undefined
+    ) {
       return;
     }
 
-    setDoc(userDoc, getUserFromAuth(authUser));
+    userDoc.set(getUserFromAuth(authUser));
   }, [authUser, firestoreUser, userDoc]);
 
   if (authError !== undefined) {

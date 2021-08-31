@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
-import { initializeApp, getApps } from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
@@ -15,8 +15,8 @@ const firebaseConfig = {
   appId: "1:581791488894:web:0e5e33d97d38bb2f2df12f",
 };
 
-if (getApps().length === 0) {
-  initializeApp(firebaseConfig);
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
