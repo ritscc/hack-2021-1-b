@@ -5,6 +5,9 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 import { UserProvider } from "../lib/user";
+import dayjs from "dayjs";
+import 'dayjs/locale/ja'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBznwwXlS_GUVrn9_ooOAZB0NJvNeYpvcc",
@@ -18,6 +21,9 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+
+dayjs.extend(relativeTime)
+dayjs.locale('ja')
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
