@@ -58,16 +58,18 @@ const useUserProviderState = (): UserState => {
     useDocumentData<User>(userDoc);
 
   useEffect(() => {
-    // not logged in or already created in firestore
-    if (
-      authUser == null ||
-      userDoc === undefined ||
-      firestoreUser !== undefined
-    ) {
-      return;
-    }
+    (async () => {
+      // not logged in
+      if (authUser == null || userDoc === undefined) {
+        return;
+      }
 
-    userDoc.set(getUserFromAuth(authUser));
+      const userData = await userDoc.get();
+
+      if (!userData.exists) {
+        userDoc.set(getUserFromAuth(authUser));
+      }
+    })();
   }, [authUser, firestoreUser, userDoc]);
 
   if (authError !== undefined) {
@@ -86,13 +88,13 @@ const useUserProviderState = (): UserState => {
     return { state: "UNAUTHORIZED" };
   }
 
-  if (firestoreLoading) {
+  if (firestoreLoading || firestoreUser === undefined) {
     return { state: "LOADING_DB" };
   }
 
   return {
     state: "LOADED",
-    user: firestoreUser ?? getUserFromAuth(authUser),
+    user: firestoreUser,
   };
 };
 
