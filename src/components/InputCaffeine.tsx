@@ -4,6 +4,7 @@ import {
   InputGroup,
   InputRightAddon,
   FormLabel,
+  FormControl,
 } from "@chakra-ui/react";
 
 type Props = {
@@ -13,7 +14,7 @@ type Props = {
 
 export const InputCaffeine: VFC<Props> = ({ value, onChange }) => {
   return (
-    <div>
+    <FormControl id="caffeine">
       <FormLabel>カフェイン</FormLabel>
       <InputGroup>
         <Input
@@ -24,8 +25,8 @@ export const InputCaffeine: VFC<Props> = ({ value, onChange }) => {
           type="number"
           placeholder="140"
         />
-        <InputRightAddon children="mg" />
+        <InputRightAddon>mg</InputRightAddon>
       </InputGroup>
-    </div>
+    </FormControl>
   );
 };
