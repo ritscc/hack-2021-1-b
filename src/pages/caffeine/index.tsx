@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex, Text, VStack,Spacer } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { Layout } from "../../components/Layout";
@@ -9,29 +9,30 @@ const IndexPage: NextPage = () => {
       <Head>
         <title>カフェイン記録一覧 | Caffeine Busters</title>
       </Head>
-      <VStack align="stretch">
-        <Flex>
-          <Text flexGrow={1}>☕ ドリップコーヒー</Text>
-          <Text>今日</Text>
+      <VStack align="stretch" border="solid" borderColor="orange.600">
+        <Flex p="4" borderBottom="solid" borderColor="orange.600">
+            <Text>ドリップコーヒー</Text>
+            <Spacer />
+              <Text>今日</Text>
         </Flex>
-        <Flex>
-          <Text flexGrow={1}>☕ ドリップコーヒー</Text>
-          <Text>今日</Text>
+        <Flex p="4" borderBottom="solid" borderColor="orange.600">
+            <Text>ドリップコーヒー</Text>
+            <Spacer />
+              <Text>今日</Text>
         </Flex>
-        <Flex>
-          <Text flexGrow={1}>☕ ドリップコーヒー</Text>
-          <Text>今日</Text>
+        <Flex p="4" borderBottom="solid" borderColor="orange.600">
+            <Text>ドリップコーヒー</Text>
+            <Spacer />
+              <Text>今日</Text>
         </Flex>
-        <Flex>
-          <Text flexGrow={1}>☕ ドリップコーヒー</Text>
-          <Text>今日</Text>
-        </Flex>
-        <Flex>
-          <Text flexGrow={1}>☕ ドリップコーヒー</Text>
-          <Text>今日</Text>
+        <Flex p="4" borderColor="orange.600">
+            <Text>ドリップコーヒー</Text>
+            <Spacer />
+              <Text>今日</Text>
         </Flex>
       </VStack>
     </Layout>
+    
   );
 };
 
