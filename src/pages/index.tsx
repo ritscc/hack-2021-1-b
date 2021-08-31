@@ -43,12 +43,16 @@ const IndexPage: NextPage = () => {
             </Box>
           </Flex>
           <VStack align="stretch" gap="4">
-            <Button size="lg" onClick={() => alert("こんにちは")}>
-              飲んだ
-            </Button>
-            <Button size="lg" onClick={() => alert("こんにちは")}>
-              記録を確認
-            </Button>
+            <NextLink href="/caffeine/new">
+              <Button size="lg" as="a">
+                飲んだ
+              </Button>
+            </NextLink>
+            <NextLink href="/caffeine/">
+              <Button size="lg" as="a">
+                記録を確認
+              </Button>
+            </NextLink>
           </VStack>
 
           <Text>カフェインカレンダー</Text>
