@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 export type BeverageName = string;
 export type BeverageType = "energy" | "coffee" | "others";
 
@@ -36,4 +38,9 @@ export type Caffeine = {
    * 飲み物の名前
    */
   beverage: BeverageName;
+
+  /**
+   * 飲んだ日時
+   */
+  time: firebase.firestore.Timestamp;
 };
