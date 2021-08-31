@@ -61,7 +61,7 @@ const IndexPage: NextPage = () => {
           <Text textAlign="center" style={{ fontSize: 50 }}>
             ☕️× {Math.floor((400 - todayCaffeineTotal) / 84)} 杯
           </Text>
-          <Flex>
+          <Flex align="center">
             {userState.user.bedtime !== null && (
               <Text flexGrow={1}>
                 就寝6時間前の
