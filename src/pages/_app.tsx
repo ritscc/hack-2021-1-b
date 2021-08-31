@@ -8,6 +8,7 @@ import { UserProvider } from "../lib/user";
 import dayjs from "dayjs";
 import 'dayjs/locale/ja'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBznwwXlS_GUVrn9_ooOAZB0NJvNeYpvcc",
@@ -24,6 +25,7 @@ if (firebase.apps.length === 0) {
 
 dayjs.extend(relativeTime)
 dayjs.locale('ja')
+dayjs.extend(customParseFormat)
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
