@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { BedtimeForm } from "../components/BedtimeForm";
 import { Layout } from "../components/Layout";
+import { RemainingCoffees } from "../components/RemainingCoffees";
 import { Caffeine } from "../lib/caffeine";
 import { useUser } from "../lib/user";
 
@@ -15,7 +16,7 @@ const IndexPage: NextPage = () => {
   const userState = useUser();
   const [showBedtimeForm, setShowBedtimeForm] = useState<boolean>(false);
 
-  const query = useMemo(
+  const monthlyCaffeinesQuery = useMemo(
     () =>
       userState.user &&
       firebase
@@ -25,19 +26,14 @@ const IndexPage: NextPage = () => {
           "time",
           ">",
           firebase.firestore.Timestamp.fromDate(
-            dayjs().subtract(1, "day").toDate()
+            dayjs().subtract(1, "month").toDate()
           )
         )
         .orderBy("time"),
     [userState.user]
   );
 
-  const [todayCaffeineList] = useCollection<Caffeine>(query);
-
-  const todayCaffeineTotal = todayCaffeineList?.docs.reduce(
-    (previous, current) => previous + current.data().amount,
-    0
-  );
+  const [monthlyCaffeineList] = useCollection<Caffeine>(monthlyCaffeinesQuery);
 
   return (
     <Layout>
@@ -51,16 +47,9 @@ const IndexPage: NextPage = () => {
         </NextLink>
       )}
 
-      {userState.state === "LOADED" && todayCaffeineTotal !== undefined && (
+      {userState.state === "LOADED" && (
         <VStack spacing="4" align="stretch">
-          <Text textAlign="center" style={{ fontSize: 30 }}>
-            今日飲めるのは
-            <br />
-            あと
-          </Text>
-          <Text textAlign="center" style={{ fontSize: 50 }}>
-            ☕️× {Math.floor((400 - todayCaffeineTotal) / 84)} 杯
-          </Text>
+          <RemainingCoffees />
           <Flex align="center">
             {userState.user.bedtime !== null && (
               <Text flexGrow={1}>
