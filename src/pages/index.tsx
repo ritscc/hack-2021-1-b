@@ -21,7 +21,7 @@ const IndexPage: NextPage = () => {
       )}
 
       {userState.state === "LOADED" && (
-        <VStack spacing="4">
+        <VStack spacing="4" align="stretch">
           <Text textAlign="center" style={{ fontSize: 30 }}>
             今日飲めるのは
             <br />
