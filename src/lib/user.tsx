@@ -7,6 +7,7 @@ export type User = {
   id: string;
   name: string | null;
   photoURL: string | null;
+  bedtime: string | null;
 };
 
 type UserState =
@@ -42,6 +43,7 @@ const getUserFromAuth = (authUser: firebase.User): User => ({
   id: authUser.uid,
   photoURL: authUser.photoURL,
   name: authUser.displayName,
+  bedtime: null,
 });
 
 const useUserProviderState = (): UserState => {
@@ -88,13 +90,13 @@ const useUserProviderState = (): UserState => {
     return { state: "UNAUTHORIZED" };
   }
 
-  if (firestoreLoading || firestoreUser === undefined) {
+  if (firestoreLoading) {
     return { state: "LOADING_DB" };
   }
 
   return {
     state: "LOADED",
-    user: firestoreUser,
+    user: firestoreUser ?? getUserFromAuth(authUser),
   };
 };
 
