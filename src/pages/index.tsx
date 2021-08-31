@@ -1,39 +1,18 @@
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import firebase from "firebase";
 import { NextPage } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
-import { useMemo, useState } from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { useState } from "react";
 import { BedtimeForm } from "../components/BedtimeForm";
+import { CaffeineCalender } from "../components/CaffeineCalender";
 import { Layout } from "../components/Layout";
 import { RemainingCoffees } from "../components/RemainingCoffees";
-import { Caffeine } from "../lib/caffeine";
 import { useUser } from "../lib/user";
 
 const IndexPage: NextPage = () => {
   const userState = useUser();
   const [showBedtimeForm, setShowBedtimeForm] = useState<boolean>(false);
-
-  const monthlyCaffeinesQuery = useMemo(
-    () =>
-      userState.user &&
-      firebase
-        .firestore()
-        .collection(`/users/${userState.user.id}/caffeine`)
-        .where(
-          "time",
-          ">",
-          firebase.firestore.Timestamp.fromDate(
-            dayjs().subtract(1, "month").toDate()
-          )
-        )
-        .orderBy("time"),
-    [userState.user]
-  );
-
-  const [monthlyCaffeineList] = useCollection<Caffeine>(monthlyCaffeinesQuery);
 
   return (
     <Layout>
@@ -91,7 +70,7 @@ const IndexPage: NextPage = () => {
             </NextLink>
           </VStack>
 
-          <Text>カフェインカレンダー</Text>
+          <CaffeineCalender />
         </VStack>
       )}
     </Layout>
