@@ -24,6 +24,7 @@ export const beverageList: Record<
   ],
   others: [
     { name: "伊右衛門 (525ml)", amount: 10 * (525 / 100) },
+    { name: "エスタロンモカ錠 (1錠)", amount: 100 },
     { name: "その他コーヒー" },
   ],
 };
