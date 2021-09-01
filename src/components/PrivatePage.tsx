@@ -13,8 +13,6 @@ export const PrivatePage: VFC<Props> = ({
 }) => {
   const userState = useUser();
 
-  console.log(userState);
-
   if (userState.state === "UNAUTHORIZED") {
     if (renderOnUnauthorized !== undefined) {
       return renderOnUnauthorized();
