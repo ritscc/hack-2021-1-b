@@ -17,6 +17,7 @@ import firebase from "firebase";
 import { beverageImageSrcs, beverageTexts, Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";
 import { PrivatePage } from "../../components/PrivatePage";
+import { SEO } from "../../components/SEO";
 
 const IndexPage: NextPage = () => {
   const router = useRouter();
@@ -38,7 +39,11 @@ const IndexPage: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Caffeine Busters</title>
+        <SEO
+          title="カフェイン記録"
+          description=""
+          path={`/caffeine/${caffeineId}`}
+        />
       </Head>
       <PrivatePage
         renderOnSignedIn={() => {

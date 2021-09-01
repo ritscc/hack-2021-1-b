@@ -1,6 +1,5 @@
 import { Button, Text, Center, SimpleGrid, VStack } from "@chakra-ui/react";
 import { NextPage } from "next";
-import Head from "next/head";
 import { Layout } from "../../components/Layout";
 import React, { useState } from "react";
 import { SelectDrink } from "../../components/SelectDrink";
@@ -9,6 +8,7 @@ import { InputCaffeine } from "../../components/InputCaffeine";
 import firebase from "firebase";
 import { useUser } from "../../lib/user";
 import Router from "next/router";
+import { SEO } from "../../components/SEO";
 
 const CaffeineNewPage: NextPage = () => {
   const userState = useUser();
@@ -56,9 +56,8 @@ const CaffeineNewPage: NextPage = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>カフェイン記録登録 | Caffeine Busters</title>
-      </Head>
+      <SEO title="記録登録" description="" path="/caffeine/new" />
+
       <VStack
         as="form"
         onSubmit={(e) => {

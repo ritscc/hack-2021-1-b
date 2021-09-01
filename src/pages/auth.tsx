@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import Head from "next/head";
 import { Layout } from "../components/Layout";
 import { useUser } from "../lib/user";
 import {
@@ -18,6 +17,7 @@ import { SignUpForm } from "../components/SignUpForm";
 import { SignInForm } from "../components/SignInForm";
 import NextLink from "next/link";
 import Router from "next/router";
+import { SEO } from "../components/SEO";
 
 const getRedirectQuery = (): string => {
   const redirectQuery = Router.query.redirect;
@@ -54,9 +54,8 @@ const LoginPage: NextPage = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>ログイン | Caffeine Busters</title>
-      </Head>
+      <SEO title="ログイン" description="" path="/auth" />
+
       {userState.state === "UNAUTHORIZED" && (
         <Tabs isFitted>
           <TabList>

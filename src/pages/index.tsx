@@ -8,13 +8,12 @@ import { Layout } from "../components/Layout";
 import { Logo } from "../components/Logo";
 import { PrivatePage } from "../components/PrivatePage";
 import { RemainingCoffees } from "../components/RemainingCoffees";
+import { SEO } from "../components/SEO";
 
 const IndexPage: NextPage = () => {
   return (
     <Layout>
-      <Head>
-        <title>Caffeine Busters</title>
-      </Head>
+      <SEO title="" description="Caffeine Busters" path="/" />
 
       <PrivatePage
         renderOnUnauthorized={() => (

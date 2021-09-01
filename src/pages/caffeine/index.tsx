@@ -17,6 +17,7 @@ import { beverageImageSrcs, beverageTexts, Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";
 import NextLink from "next/link";
 import { PrivatePage } from "../../components/PrivatePage";
+import { SEO } from "../../components/SEO";
 
 const IndexPage: NextPage = () => {
   const userState = useUser();
@@ -29,7 +30,7 @@ const IndexPage: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>カフェイン記録一覧 | Caffeine Busters</title>
+        <SEO title="カフェイン記録一覧" description="" path="/caffeine" />
       </Head>
       <PrivatePage
         renderOnSignedIn={() => (
