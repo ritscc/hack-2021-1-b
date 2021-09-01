@@ -9,6 +9,7 @@ import "dayjs/locale/ja";
 import relativeTime from "dayjs/plugin/relativeTime";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import isBetween from "dayjs/plugin/isBetween";
+import { theme } from "../lib/theme";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBznwwXlS_GUVrn9_ooOAZB0NJvNeYpvcc",
@@ -30,7 +31,7 @@ dayjs.extend(isBetween);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <UserProvider>
         <Component {...pageProps} />
       </UserProvider>
