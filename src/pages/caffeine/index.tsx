@@ -1,4 +1,4 @@
-import { Flex, Text, VStack, Spacer, Box } from "@chakra-ui/react";
+import { Flex, Text, VStack, Spacer, Center, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -8,6 +8,7 @@ import { useUser } from "../../lib/user";
 import { Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";
 import NextLink from "next/link";
+import { PrivatePage } from "../../components/PrivatePage";
 
 const IndexPage: NextPage = () => {
   const userState = useUser();
@@ -22,39 +23,48 @@ const IndexPage: NextPage = () => {
       <Head>
         <title>カフェイン記録一覧 | Caffeine Busters</title>
       </Head>
+      <PrivatePage
+        renderOnSignedIn={() => (
+          <>
+            {loadingCaffeineList && (
+              <Center h="100%" w="100%" m="auto">
+                <Spinner size="xl" />
+              </Center>
+            )}
+            {caffeineList && (
+              <VStack align="stretch">
+                {caffeineList.docs.map((doc, i, self) => {
+                  const data = doc.data();
+                  const time = dayjs(data.time.toDate());
+                  const isLast = i === self.length - 1;
 
-      {loadingCaffeineList && <Text align="center">Loading...</Text>}
-      {caffeineList && (
-        <VStack align="stretch">
-          {caffeineList.docs.map((doc, i, self) => {
-            const data = doc.data();
-            const time = dayjs(data.time.toDate());
-            const isLast = i === self.length - 1;
-
-            return (
-              <NextLink href={`/caffeine/${doc.id}`} key={doc.id}>
-                <Flex
-                  as="a"
-                  p="2"
-                  align="center"
-                  borderBottomWidth={!isLast ? "thin" : undefined}
-                >
-                  <Text px="2" fontSize="lg">
-                    {data.beverage}
-                  </Text>
-                  <Spacer />
-                  <Flex flexDir="column" fontSize="sm" textAlign="right">
-                    <Text>{data.amount} mg</Text>
-                    <Text title={time.format("YYYY/MM/DD HH:mm:ss")}>
-                      {time.fromNow()}
-                    </Text>
-                  </Flex>
-                </Flex>
-              </NextLink>
-            );
-          })}
-        </VStack>
-      )}
+                  return (
+                    <NextLink href={`/caffeine/${doc.id}`} key={doc.id}>
+                      <Flex
+                        as="a"
+                        p="2"
+                        align="center"
+                        borderBottomWidth={!isLast ? "thin" : undefined}
+                      >
+                        <Text px="2" fontSize="lg">
+                          {data.beverage}
+                        </Text>
+                        <Spacer />
+                        <Flex flexDir="column" fontSize="sm" textAlign="right">
+                          <Text>{data.amount} mg</Text>
+                          <Text title={time.format("YYYY/MM/DD HH:mm:ss")}>
+                            {time.fromNow()}
+                          </Text>
+                        </Flex>
+                      </Flex>
+                    </NextLink>
+                  );
+                })}
+              </VStack>
+            )}
+          </>
+        )}
+      />
     </Layout>
   );
 };
