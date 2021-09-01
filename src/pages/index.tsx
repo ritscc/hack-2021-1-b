@@ -7,11 +7,10 @@ import { useState } from "react";
 import { BedtimeForm } from "../components/BedtimeForm";
 import { CaffeineCalender } from "../components/CaffeineCalender";
 import { Layout } from "../components/Layout";
+import { PrivatePage } from "../components/PrivatePage";
 import { RemainingCoffees } from "../components/RemainingCoffees";
-import { useUser } from "../lib/user";
 
 const IndexPage: NextPage = () => {
-  const userState = useUser();
   const [showBedtimeForm, setShowBedtimeForm] = useState<boolean>(false);
 
   return (
@@ -20,59 +19,55 @@ const IndexPage: NextPage = () => {
         <title>Caffeine Busters</title>
       </Head>
 
-      {userState.state === "UNAUTHORIZED" && (
-        <NextLink href="/auth">
-          <Button as="a">ログイン</Button>
-        </NextLink>
-      )}
+      <PrivatePage
+        renderOnSignedIn={(user) => (
+          <VStack spacing="4" align="stretch">
+            <RemainingCoffees />
+            <Flex align="center">
+              {user.bedtime !== null && (
+                <Text flexGrow={1}>
+                  就寝6時間前の
+                  <br />
+                  {dayjs(user.bedtime, "HH:mm")
+                    .subtract(6, "hour")
+                    .format("HH:mm")}
+                  まで飲めます
+                </Text>
+              )}
+              {user.bedtime === null && (
+                <Text flexGrow={1}>就寝時刻が未設定です</Text>
+              )}
 
-      {userState.state === "LOADED" && (
-        <VStack spacing="4" align="stretch">
-          <RemainingCoffees />
-          <Flex align="center">
-            {userState.user.bedtime !== null && (
-              <Text flexGrow={1}>
-                就寝6時間前の
-                <br />
-                {dayjs(userState.user.bedtime, "HH:mm")
-                  .subtract(6, "hour")
-                  .format("HH:mm")}
-                まで飲めます
-              </Text>
+              <Box>
+                <Button onClick={() => setShowBedtimeForm(!showBedtimeForm)}>
+                  就寝時刻の設定
+                </Button>
+              </Box>
+            </Flex>
+            {showBedtimeForm && (
+              <BedtimeForm
+                onClose={() => {
+                  setShowBedtimeForm(false);
+                }}
+              />
             )}
-            {userState.user.bedtime === null && (
-              <Text flexGrow={1}>就寝時刻が未設定です</Text>
-            )}
+            <VStack align="stretch" gap="4">
+              <NextLink href="/caffeine/new">
+                <Button size="lg" as="a">
+                  飲んだ
+                </Button>
+              </NextLink>
+              <NextLink href="/caffeine/">
+                <Button size="lg" as="a">
+                  記録を確認
+                </Button>
+              </NextLink>
+            </VStack>
 
-            <Box>
-              <Button onClick={() => setShowBedtimeForm(!showBedtimeForm)}>
-                就寝時刻の設定
-              </Button>
-            </Box>
-          </Flex>
-          {showBedtimeForm && (
-            <BedtimeForm
-              onClose={() => {
-                setShowBedtimeForm(false);
-              }}
-            />
-          )}
-          <VStack align="stretch" gap="4">
-            <NextLink href="/caffeine/new">
-              <Button size="lg" as="a">
-                飲んだ
-              </Button>
-            </NextLink>
-            <NextLink href="/caffeine/">
-              <Button size="lg" as="a">
-                記録を確認
-              </Button>
-            </NextLink>
+            <CaffeineCalender />
           </VStack>
-
-          <CaffeineCalender />
-        </VStack>
-      )}
+        )}
+      />
     </Layout>
   );
 };
