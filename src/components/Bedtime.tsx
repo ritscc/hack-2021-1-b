@@ -12,14 +12,13 @@ export const Bedtime: VFC = () => {
     return null;
   }
 
-  const caffeineTimeLimit = dayjs(userState.user.bedtime, "HH:mm").subtract(
-    6,
-    "hour"
+  const caffeineTimeLimitText = dayjs(userState.user.bedtime, "HH:mm")
+    .subtract(6, "hour")
+    .format("HH:mm");
+
+  const isAfterCaffeineTimeLimitText = dayjs().isAfter(
+    dayjs(caffeineTimeLimitText, "HH:mm")
   );
-
-  const caffeineTimeLimitText = caffeineTimeLimit.format("HH:mm");
-
-  const isAfterCaffeineTimeLimitText = dayjs().isAfter(caffeineTimeLimit);
 
   return (
     <VStack spacing="4" align="stretch">
