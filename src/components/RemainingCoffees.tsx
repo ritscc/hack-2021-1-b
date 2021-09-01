@@ -1,4 +1,4 @@
-import { Center, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Box, Progress, Spinner, Text, VStack } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import firebase from "firebase";
 import React, { useMemo, VFC } from "react";
@@ -34,10 +34,16 @@ export const RemainingCoffees: VFC = () => {
   );
 
   return (
-    <Center h="72">
-      {todayCaffeineTotal === undefined && <Spinner size="lg" />}
+    <VStack spacing="4" alignItems="stretch" justify="center" h="72">
+      {todayCaffeineTotal === undefined && <Spinner size="lg" m="auto" />}
+      {todayCaffeineTotal !== undefined && (
+        <Progress
+          colorScheme="orange"
+          value={Math.min((todayCaffeineTotal / 400) * 100, 100)}
+        />
+      )}
       {todayCaffeineTotal !== undefined && todayCaffeineTotal <= 400 && (
-        <VStack spacing="4" align="stretch" justify="center">
+        <Box>
           <Text textAlign="center" fontSize="30">
             今日飲めるのは
             <br />
@@ -51,10 +57,10 @@ export const RemainingCoffees: VFC = () => {
             {todayCaffeineTotal}
             mg
           </Text>
-        </VStack>
+        </Box>
       )}
       {todayCaffeineTotal !== undefined && todayCaffeineTotal > 400 && (
-        <VStack spacing="4" align="stretch" justify="center">
+        <Box>
           <Text
             textAlign="center"
             fontSize="30"
@@ -70,8 +76,8 @@ export const RemainingCoffees: VFC = () => {
             カフェインの摂取量が、健康な成人の推奨摂取量上限である 400mg
             を超えています。
           </Text>
-        </VStack>
+        </Box>
       )}
-    </Center>
+    </VStack>
   );
 };
