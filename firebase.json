@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/auth{,/}",
+        "destination": "/auth.html"
+      },
+      {
+        "source": "/caffeine{,/}",
+        "destination": "/caffeine.html"
+      },
+      {
+        "source": "/caffeine/new{,/}",
+        "destination": "/caffeine/new.html"
+      },
+      {
+        "source": "/caffeine/**",
+        "destination": "/caffeine/[caffeineId].html"
+      }
+    ]
+  }
+}
