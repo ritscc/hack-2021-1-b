@@ -3,7 +3,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import "firebase/storage";
 import { UserProvider } from "../lib/user";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
