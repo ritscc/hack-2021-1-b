@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { SelectDrink } from "../../components/SelectDrink";
 import { beverageList, BeverageType, Caffeine } from "../../lib/caffeine";
 import { InputCaffeine } from "../../components/InputCaffeine";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useUser } from "../../lib/user";
 import Router from "next/router";
 import { SEO } from "../../components/SEO";

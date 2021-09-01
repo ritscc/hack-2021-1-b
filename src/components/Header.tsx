@@ -3,7 +3,7 @@ import { VFC } from "react";
 import { useUser } from "../lib/user";
 import { Link } from "./Link";
 import { Logo } from "./Logo";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
 

@@ -11,7 +11,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Layout } from "../../components/Layout";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useUser } from "../../lib/user";
 import { beverageImageSrcs, beverageTexts, Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";

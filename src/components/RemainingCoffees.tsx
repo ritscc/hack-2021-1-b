@@ -1,6 +1,6 @@
 import { Box, Progress, Spinner, Text, VStack } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import React, { useMemo, VFC } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Caffeine } from "../lib/caffeine";

@@ -8,7 +8,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useEffect, useMemo, useRef, useState, VFC } from "react";
 import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
 import { Caffeine } from "../lib/caffeine";

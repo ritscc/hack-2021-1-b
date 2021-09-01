@@ -8,7 +8,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { useUser } from "../lib/user";
 
 type Props = {

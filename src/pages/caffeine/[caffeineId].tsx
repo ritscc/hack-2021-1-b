@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { Layout } from "../../components/Layout";
 import { useUser } from "../../lib/user";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { beverageImageSrcs, beverageTexts, Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";
 import { PrivatePage } from "../../components/PrivatePage";
