@@ -65,6 +65,7 @@ const CaffeineNewPage: NextPage = () => {
           e.preventDefault();
           createCaffeine();
         }}
+        alignItems="stretch"
       >
         <Center>
           <Text fontSize="2xl">飲んだのは</Text>
