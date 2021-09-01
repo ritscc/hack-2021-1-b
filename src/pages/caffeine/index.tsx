@@ -8,7 +8,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
-import Head from "next/head";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Layout } from "../../components/Layout";
 import firebase from "firebase/app";
@@ -29,9 +28,7 @@ const IndexPage: NextPage = () => {
 
   return (
     <Layout>
-      <Head>
-        <SEO title="カフェイン記録一覧" description="" path="/caffeine" />
-      </Head>
+      <SEO title="カフェイン記録一覧" description="" path="/caffeine" />
       <PrivatePage
         renderOnSignedIn={() => (
           <>
