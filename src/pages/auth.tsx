@@ -80,7 +80,7 @@ const LoginPage: NextPage = () => {
           <VStack>
             <Text>すでにログインされています。</Text>
 
-            <NextLink href="/">
+            <NextLink href="/" passHref>
               <Button as="a">トップへ</Button>
             </NextLink>
           </VStack>

@@ -39,7 +39,11 @@ const IndexPage: NextPage = () => {
                   const isLast = i === self.length - 1;
 
                   return (
-                    <NextLink href={`/caffeine/${doc.id}`} key={doc.id}>
+                    <NextLink
+                      href={`/caffeine/${doc.id}`}
+                      key={doc.id}
+                      passHref
+                    >
                       <Flex
                         as="a"
                         p="2"

@@ -28,6 +28,7 @@ export const Header: VFC = () => {
       {userState.state === "UNAUTHORIZED" && (
         <NextLink
           href={`/auth?redirect=${encodeURIComponent(router.pathname)}`}
+          passHref
         >
           <Button as="a">ログイン</Button>
         </NextLink>
