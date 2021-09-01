@@ -7,7 +7,12 @@ export const Logo: VFC = () => (
     viewBox="0 0 197 21"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ height: "1.5em" }}
+    style={{
+      height: "1em",
+      width: "auto",
+      display: "inline-block",
+      verticalAlign: "baseline",
+    }}
   >
     <title>Caffeine Busters</title>
     <path
