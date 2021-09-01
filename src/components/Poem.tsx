@@ -90,7 +90,7 @@ const poemElements = [
       クレイジーなのは承知の上だがまずはトライしてみてくれ。きっとこの新感覚を気に入るはずだ。
       カフェインから解放せよ！
     </Text>
-    <Text color="red.800" fontSize="6xl">
+    <Text color="red.500" fontSize="6xl">
       <SupressTheBeast />
     </Text>
   </VStack>,
@@ -122,6 +122,9 @@ const poemElements = [
       </Box>
       は、開発や遊びで摂取したカフェインを丁寧に記録。 要するにヤバイ・・・。
       摂取量超え、睡眠時間も管理、湧き上がるゾクゾク感。
+    </Text>
+    <Text color="white" fontSize="6xl">
+      <SupressTheBeast />
     </Text>
   </VStack>,
 ];
