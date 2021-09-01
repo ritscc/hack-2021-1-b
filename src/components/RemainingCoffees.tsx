@@ -36,15 +36,39 @@ export const RemainingCoffees: VFC = () => {
   return (
     <Center h="72">
       {todayCaffeineTotal === undefined && <Spinner size="lg" />}
-      {todayCaffeineTotal !== undefined && (
+      {todayCaffeineTotal !== undefined && todayCaffeineTotal <= 400 && (
         <VStack spacing="4" align="stretch" justify="center">
-          <Text textAlign="center" style={{ fontSize: 30 }}>
+          <Text textAlign="center" fontSize="30">
             今日飲めるのは
             <br />
             あと
           </Text>
-          <Text textAlign="center" style={{ fontSize: 50 }}>
+          <Text textAlign="center" fontSize="50">
             ☕️× {Math.floor((400 - todayCaffeineTotal) / 84)} 杯
+          </Text>
+          <Text textAlign="center">
+            <b>現在の摂取量:</b>
+            {todayCaffeineTotal}
+            mg
+          </Text>
+        </VStack>
+      )}
+      {todayCaffeineTotal !== undefined && todayCaffeineTotal > 400 && (
+        <VStack spacing="4" align="stretch" justify="center">
+          <Text
+            textAlign="center"
+            fontSize="30"
+            color="red.500"
+            fontWeight="bold"
+          >
+            もう飲めません！
+          </Text>
+          <Text fontSize="30" textAlign="center">
+            😰
+          </Text>
+          <Text textAlign="center">
+            カフェインの摂取量が、健康な成人の推奨摂取量上限である 400mg
+            を超えています。
           </Text>
         </VStack>
       )}
