@@ -1,11 +1,10 @@
-import { Box, Button, Image, Text, VStack } from "@chakra-ui/react";
+import { Button, Text, VStack } from "@chakra-ui/react";
 import { NextPage } from "next";
-import Head from "next/head";
 import NextLink from "next/link";
 import { Bedtime } from "../components/Bedtime";
 import { CaffeineCalender } from "../components/CaffeineCalender";
 import { Layout } from "../components/Layout";
-import { Logo } from "../components/Logo";
+import { Poem } from "../components/Poem";
 import { PrivatePage } from "../components/PrivatePage";
 import { RemainingCoffees } from "../components/RemainingCoffees";
 import { SEO } from "../components/SEO";
@@ -25,49 +24,7 @@ const IndexPage: NextPage = () => {
                 </Button>
               </NextLink>
             </Text>
-            <VStack alignItems="stretch" bgColor="black" color="white" p="8">
-              <Text>
-                <Box display="inline-block" color="orange.700">
-                  <Logo />
-                  <br />
-                </Box>
-                の世界を体感せよ！
-              </Text>
-              <Text>
-                ハッカソンで生まれ、RCC で一大ブームを巻き起こしている
-                カフェイン管理アプリ、
-                <Box display="inline-block" color="orange.700">
-                  <Logo />
-                  <br />
-                </Box>
-                ！ 誰もがハマる使用感とパンチのあるアプリです。
-              </Text>
-              <Text>
-                日本のカフェインファンのために、独自のシステムを実現、
-                <br />
-                <Box display="inline-block" color="orange.700">
-                  <Logo />
-                  <br />
-                </Box>
-                ならではのゾクゾク感を体感ください！
-              </Text>
-              <Text>
-                一度使えば、世界中のツイ廃や受験生、そして全ての
-                <Box display="inline-block" color="orange.700">
-                  <Logo />
-                  <br />
-                </Box>
-                ファンが熱狂するワケを実感できるはず！
-              </Text>
-              <Text color="green.400">
-                <Image
-                  src="/assets/images/suppress-the-beast.svg"
-                  alt="Suppress the Beast!"
-                  w="auto"
-                  h="12"
-                />
-              </Text>
-            </VStack>
+            <Poem />
           </VStack>
         )}
         renderOnSignedIn={() => {
