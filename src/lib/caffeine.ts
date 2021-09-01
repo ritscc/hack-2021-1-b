@@ -29,6 +29,18 @@ export const beverageList: Record<
   ],
 };
 
+export const beverageImageSrcs: Record<BeverageType, string> = {
+  coffee: "/assets/images/beverages/coffee.png",
+  energy: "/assets/images/beverages/energy.png",
+  others: "/assets/images/beverages/others.png",
+};
+
+export const beverageTexts: Record<BeverageType, string> = {
+  coffee: "コーヒー",
+  energy: "エナジードリンク",
+  others: "その他の飲料",
+};
+
 export type Caffeine = {
   /**
    * カフェイン量 (mg)
