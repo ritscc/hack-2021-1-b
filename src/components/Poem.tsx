@@ -1,5 +1,6 @@
 import { Box, Image, Text, VStack } from "@chakra-ui/react";
 import { useState, VFC } from "react";
+import { AbsolutelyGuaranteed } from "./AbsolutelyGuaranteed";
 import { Logo } from "./Logo";
 import { SupressTheBeast } from "./SupressTheBeast";
 
@@ -74,7 +75,7 @@ const poemElements = [
       <SupressTheBeast />
     </Text>
   </VStack>,
-  <VStack alignItems="stretch" bgColor="black" color="white" p="8" key="cuba">
+  <VStack alignItems="stretch" bgColor="black" color="white" p="8" key="zero">
     <Text>
       「身体を解放せよ！」カフェインからの独立の時、このRCC民の声とともに、かの有名な運動「
       <Box as="span" display="inline-block" color="orange.700">
@@ -124,7 +125,7 @@ const poemElements = [
       摂取量超え、睡眠時間も管理、湧き上がるゾクゾク感。
     </Text>
     <Text color="white" fontSize="6xl">
-      <SupressTheBeast />
+      <AbsolutelyGuaranteed />
     </Text>
   </VStack>,
 ];
