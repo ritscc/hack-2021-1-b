@@ -75,6 +75,35 @@ const poemElements = [
       <SupressTheBeast />
     </Text>
   </VStack>,
+  <VStack alignItems="stretch" bgColor="black" color="white" p="8" key="chaos">
+    <Text>ただのカフェイン制限では物足りないあなたへ！</Text>
+    <Text>
+      常に極限を求める RCC のプロ廃人、彼らの声を元に開発されたのが、Caffeine と
+      Buster をブレンドした新感覚の Web アプリ、
+      <Box as="span" display="inline-block" color="orange.700">
+        <Logo />
+      </Box>
+      !
+    </Text>
+    <Text>
+      3日間に及ぶ開発期間を経て、やぎちゃんのテイストはそのままに、ハッカソンをブレンドすることで斬新なテイストを実現しました。
+    </Text>
+    <Text>
+      カフェインが足りてるあなたへ・・・
+      <Box as="span" display="inline-block" color="orange.700">
+        <Logo />
+      </Box>
+      カフェインと管理のハイブリッド、Web
+      ではじける使用感とあの洗練されたやぎちゃんのテイストを Mix
+      、きっとあなたもハマるはず！
+    </Text>
+
+    <Text fontStyle="italic">Flavor Profile: 90% 八木田、100% RCC!</Text>
+
+    <Text color="orange.400" fontSize="6xl">
+      <SupressTheBeast />
+    </Text>
+  </VStack>,
   <VStack alignItems="stretch" bgColor="black" color="white" p="8" key="zero">
     <Text>
       「身体を解放せよ！」カフェインからの独立の時、このRCC民の声とともに、かの有名な運動「
