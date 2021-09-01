@@ -153,7 +153,7 @@ const poemElements = [
       は、開発や遊びで摂取したカフェインを丁寧に記録。 要するにヤバイ・・・。
       摂取量超え、睡眠時間も管理、湧き上がるゾクゾク感。
     </Text>
-    <Text color="white" fontSize="6xl">
+    <Text color="blue.300" fontSize="6xl">
       <AbsolutelyGuaranteed />
     </Text>
   </VStack>,
