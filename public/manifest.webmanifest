@@ -1,0 +1,41 @@
+{
+  "description": "Caffeine Busters",
+  "name": "Caffeine Busters",
+  "short_name": "Caffeine Busters",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#652B19",
+  "scope": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/icons/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "src": "/assets/icons/192maskable.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "src": "/assets/icons/512maskable.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ]
+}

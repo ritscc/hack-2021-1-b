@@ -19,6 +19,10 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+
+          <meta name="theme-color" content="#652B19" />
+          <link rel="apple-touch-icon" href="/images/icons/192maskable.png" />
+          <link rel="manifest" href="manifest.webmanifest" />
         </Head>
         <body>
           <Main />
