@@ -1,11 +1,19 @@
-import { Flex, Text, VStack, Spacer, Center, Spinner } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  VStack,
+  Spacer,
+  Center,
+  Spinner,
+  Image,
+} from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Layout } from "../../components/Layout";
 import firebase from "firebase";
 import { useUser } from "../../lib/user";
-import { Caffeine } from "../../lib/caffeine";
+import { beverageImageSrcs, beverageTexts, Caffeine } from "../../lib/caffeine";
 import dayjs from "dayjs";
 import NextLink from "next/link";
 import { PrivatePage } from "../../components/PrivatePage";
@@ -50,6 +58,12 @@ const IndexPage: NextPage = () => {
                         align="center"
                         borderBottomWidth={!isLast ? "thin" : undefined}
                       >
+                        <Image
+                          src={beverageImageSrcs[data.beverageType]}
+                          alt={`${beverageTexts[data.beverageType]}の画像`}
+                          h="10"
+                          w="10"
+                        />
                         <Text px="2" fontSize="lg">
                           {data.beverage}
                         </Text>
