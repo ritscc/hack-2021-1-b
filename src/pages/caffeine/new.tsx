@@ -42,6 +42,7 @@ const CaffeineNewPage: NextPage = () => {
     const caffeine: Caffeine = {
       amount,
       time: firebase.firestore.Timestamp.now(),
+      beverageType: beverageType,
       beverage: beverageList[beverageType][beverageIndex].name,
     };
 

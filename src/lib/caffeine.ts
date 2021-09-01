@@ -41,6 +41,11 @@ export type Caffeine = {
   beverage: BeverageName;
 
   /**
+   * 飲み物の種類
+   */
+  beverageType: BeverageType;
+
+  /**
    * 飲んだ日時
    */
   time: firebase.firestore.Timestamp;
