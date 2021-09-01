@@ -41,7 +41,9 @@ export const BedtimeForm: VFC<Props> = ({ onClose }) => {
             { merge: true }
           );
         } catch (error) {
-          alert(error.message);
+          if (error instanceof Error) {
+            alert(error.message);
+          }
         }
 
         onClose();
